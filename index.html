@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CorrectExam - Automatisation de correction d'examens</title>
+    <link rel="icon" href="https://correctexam.github.io/corrigeExamFront/logo-jhipster.6125d9b31ded8344.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0d89ec;
+            --secondary-color: #2c3e50;
+            --accent-color: #27ae60;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: var(--secondary-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: transparent;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            background-color: var(--light-color);
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-top: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            margin-left: 3rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .language-switch {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-left: 1.5rem;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            margin-right: 2rem;
+        }
+
+        .language-switch img {
+            width: 20px;
+            margin-right: 5px;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+        }
+
+        section h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        #context .section-title:after {
+            left: 0%;
+            /* Ajuste ce pourcentage selon ton besoin */
+            transform: translateX(0);
+            /* Supprime le centrage */
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--dark-color), #1a2a3a);
+            color: white;
+            padding: 10rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            /* Important pour éviter que l'image ne déborde */
+        }
+
+        .hero-cutout {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45%;
+            /* Augmenté de 50% à 65% pour une découpe plus grande */
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            /* Nouvelle découpe avec des bords plus arrondis */
+            clip-path: ellipse(70% 80% at 70% 50%);
+            z-index: 1;
+        }
+
+        /* Assurez-vous que le contenu est au-dessus de l'image */
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .hero-correct {
+            color: white;
+            font-size: 5rem;
+            font-weight: normal;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-exam {
+            color: var(--primary-color);
+            font-size: 7rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .hero h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: justify;
+            word-wrap: break-word;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background-color: var(--light-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .problem-card i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary-color);
+            font-size: 3rem;
+
+        }
+
+        /* Solutions Section */
+        .solutions {
+            background-color: var(--light-color);
+        }
+
+        .solution-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .solution-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: justify;
+            gap: 1rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .solution-item img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .team-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-card {
+            background-color: var(--light-color);
+            border-radius: 16px;
+            overflow: hidden;
+            text-align: center;
+            width: 250px;
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 250px;
+            object-position: center;
+            background-position: center;
+            clip-path: circle(45% at 50% 50%);
+        }
+
+        .entity h2 {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        .entity-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .entity-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: justify;
+            background-color: var(--light-color);
+            width: 350px;
+            padding: 2rem;
+            border-radius: 16px;
+        }
+        .entity-card img {
+            height: 90px;
+            width: 250px;
+        }
+        .entity-card p {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="https://correctexam.github.io/corrigeExamFront/logo-jhipster.6125d9b31ded8344.png">
+                    <h1>CorrectExam</h1>
+                </div>
+                <ul class="nav-links">
+                    <a href="#context" data-i18n="nav.context">Contexte</a>
+                    <a href="#solutions" data-i18n="nav.solutions">Solutions</a>
+                    <a href="#team" data-i18n="nav.team">Équipe</a>
+                    <a href="#technologies" data-i18n="nav.technologies">Technologies</a>
+                    <button class="language-switch" onclick="switchLanguage()">
+                        <img id="language-flag" src="https://flagicons.lipis.dev/flags/4x3/fr.svg">
+                        <span id="language-text">FR</span>
+                    </button>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-cutout"></div>
+        <div class="container">
+            <div class="hero-title">
+                <span class="hero-correct">correct</span>
+                <span class="hero-exam">Exam</span>
+            </div>
+            <h2 data-i18n="hero.title">Automatisez la correction de vos examens</h2>
+        </div>
+    </section>
+
+    <section id="context">
+        <div class="container">
+            <h2 class="section-title" data-i18n="context.title"
+                style="display: flex; align-items: flex-start; gap: 8px; text-align: start; white-space: nowrap;">
+                Bienvenue sur<span style="color: #0d89ec;">
+                    CorrectExam 2.0</span></h2>
+            <div class="intro-content">
+                <p data-i18n="context.description">CorrectExam est une application open-source développée par des
+                    membres de l'Université de Rennes. Son objectif est d'améliorer l'efficacité de la correction des
+                    examens en automatisant une partie du processus.
+                    <br>
+                    <br>
+                    Les professeurs scannent les copies des élèves et les corrigent de manière transversale via
+                    l'application. Ils peuvent attribuer des notes, ajouter des commentaires et des annotations, puis
+                    valider la note finale.
+                    <br>
+                    <br>
+                    L'application permet également de générer des statistiques sur les résultats des élèves et de
+                    stocker leurs copies de manière sécurisée. Les élèves peuvent ensuite consulter leur copie et les
+                    commentaires des enseignants directement sur l'application.
+                </p>
+                <div class="video-container">
+                    <video style="width: 640px; height: 360px; left: 0px; top: 0px;" tabindex="-1" aria-hidden="true"
+                        class="video-stream html5-main-video" webkit-playsinline="" playsinline=""
+                        controlslist="nodownload"
+                        src="blob:https://www.youtube.com/ceb8c4af-f6b7-4f63-a911-c13c826ba659"></video>
+                </div>
+            </div>
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <i class="fas fa-clock"></i>
+                    <h3 data-i18n="context.time.title">Gain de temps</h3>
+                    <p data-i18n="context.time.description">Les enseignants passent des heures à corriger manuellement
+                        les examens, un processus fastidieux qui pourrait être optimisé.</p>
+                </div>
+                <div class="problem-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3 data-i18n="context.efficiency.title">Efficacité</h3>
+                    <p data-i18n="context.efficiency.description">La correction manuelle est sujette à des erreurs et
+                        des incohérences, ce qui peut affecter la qualité de l'évaluation.</p>
+                </div>
+                <div class="problem-card">
+                    <i class="fas fa-database"></i>
+                    <h3 data-i18n="context.data.title">Gestion des données</h3>
+                    <p data-i18n="context.data.description">Le traitement et l'analyse des résultats d'examens
+                        nécessitent une organisation efficace des données.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="solutions">
+        <div class="container">
+            <h2 class="section-title" data-i18n="solutions.title">Nos Solutions</h2>
+            <div id="solutions-carousel" class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide solution-item">
+                            <img src="https://www.csshop.fr/wp-content/uploads/2024/10/tronconneuse-img-400x250.jpeg"
+                                alt="Reconnaissance automatique">
+                            <h3 data-i18n="solutions.recognition.title">Reconnaissance de texte</h3>
+                            <p data-i18n="solutions.recognition.description">
+                                Notre applications utilise des algorithmes de reconnaissance d'écriture manuscrite tel
+                                que MLT et DAN
+                                pour identifier les réponses des étudiants. On stocke ensuite les transcriptions dans
+                                une base de données.
+                            </p>
+                        </li>
+                        <li class="splide__slide solution-item">
+                            <img src="https://www.csshop.fr/wp-content/uploads/2024/10/tronconneuse-img-400x250.jpeg"
+                                alt="Interface intuitive">
+                            <h3 data-i18n="solutions.interface.title">Regroupement de réponses similaires</h3>
+                            <p data-i18n="solutions.interface.description">
+                                Notre application simplifie la correction en regroupant les réponses similaires et en
+                                les affichant sur une interface intuitive.
+                                L'enseignant peut ainsi attribuer une note et un commentaire à chaque groupe de
+                                réponses.
+                                Il a également la possibilité d’exclure certaines réponses du groupe si nécessaire.
+                            </p>
+                        </li>
+                        <li class="splide__slide solution-item">
+                            <img src="https://www.csshop.fr/wp-content/uploads/2024/10/tronconneuse-img-400x250.jpeg"
+                                alt="Analyse statistique">
+                            <h3 data-i18n="solutions.analytics.title">Correction automatique</h3>
+                            <p data-i18n="solutions.analytics.description">
+                                Nous proposons une correction automatique des examens en utilisant un système RAG
+                                (Retrieval-Augmented Generation).
+                                Ce RAG est alimenté par des documents issus du cours, lui permettant d'extraire les
+                                informations pertinentes pour proposer une correction.
+                                Il s’appuie ensuite sur un LLM, Lama 3.1, pour formuler une évaluation cohérente.
+                                L'enseignant effectue une vérification finale avant de valider les notes.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Pagination -->
+                <div class="splide__pagination"></div>
+                <!-- Navigation -->
+                <div class="splide__arrows">
+                    <button class="splide__arrow splide__arrow--prev"></button>
+                    <button class="splide__arrow splide__arrow--next"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <h2 class="section-title" data-i18n="team.title">Notre Équipe</h2>
+            <div class="team-cards">
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Thomas Girault</h3>
+                        <p data-i18n="team.role1">truc</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Thomas Ledret</h3>
+                        <p data-i18n="team.role2">truc</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Pinar Tur</h3>
+                        <p data-i18n="team.role3">truc</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Louis Descamps</h3>
+                        <p data-i18n="team.role1">truc</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Léo Breidenstein</h3>
+                        <p data-i18n="team.role1">truc</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Jeanne Dubois</h3>
+                        <p data-i18n="team.role1">truc</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Aidan Gallagher</h3>
+                        <p data-i18n="team.role1">truc</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3> Bertrand Coüasnon</h3>
+                        <p data-i18n="team.role1">truc</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="entity">
+                <h2>Au cours de l'année, nous avons collaboré avec différents acteurs informatiques du bassin rennais, 
+                    qui nous ont permis d'utiliser leurs outils et d'améliorer notre gestion de projet.</h2>
+                <div class="entity-cards">
+                    <div class="entity-card">
+                        <img src="https://res.cloudinary.com/emg-prod/image/upload/f_auto,q_auto/v1/HtmlPages/HtmlPage23115/sopra-sterialogo_tso21.png" alt="Logo Sopesteria">
+                        <p data-i18n="entity.sopra">Plusieurs employés de Sopra Steria nous ont accompagnés dans la gestion du projet en contexte agile,
+                            notamment en participant régulièrement à des réunions et aux rétrospectives Scrum.</p>
+                    </div>
+                    <div class="entity-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/3/3d/LogoIRISA-web.png/250px-LogoIRISA-web.png" alt="Logo Irisa">
+                        <p data-i18n="entity.irisa">L'IRISA nous a fourni le module MLT, une architecture de réseau neuronal légère dédiée à
+                             la reconnaissance de texte manuscrit. Basée sur cinq couches convolutives, elle extrait les caractéristiques visuelles 
+                             du texte, comme les contours et les formes.
+                        </p>
+                    </div>
+                    <div class="entity-card">
+                        <img src="https://correctexam.github.io/corrigeExamFront/logo-jhipster.6125d9b31ded8344.png" alt="Logo correctExam">
+                        <p data-i18n="entity.correctexam">Nous avons échangé et organisé plusieurs rendez-vous avec l'équipe de CorrectEam 
+                            pour discuter des fonctionnalités à ajouter, ainsi que de la manière dont nous allions les intégrer.</p>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </section>
+
+</body>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+
+<script>
+
+    let currentLanguage = 'fr';
+
+    function switchLanguage() {
+        currentLanguage = currentLanguage === 'fr' ? 'en' : 'fr';
+        switchLanguageUI();
+        switchLanguageText();
+    }
+
+    function switchLanguageUI() {
+        const languageFlag = document.getElementById('language-flag');
+        const languageText = document.getElementById('language-text');
+
+        if (languageText.innerText === 'FR') {
+            languageFlag.src = 'https://flagicons.lipis.dev/flags/4x3/us.svg';
+            languageText.innerText = 'EN';
+        } else {
+            languageFlag.src = 'https://flagicons.lipis.dev/flags/4x3/fr.svg';
+            languageText.innerText = 'FR';
+        }
+    }
+
+    function switchLanguageText() {
+        const elements = document.querySelectorAll('[data-i18n]');
+
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            element.innerText = translations[currentLanguage][key];
+        });
+    }
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Splide('#solutions-carousel', {
+            type: 'loop',
+            perPage: 1,
+            autoplay: true,
+            interval: 3000,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            arrows: true,
+            pagination: true
+        }).mount();
+    });
+</script>
+
+
+</html>

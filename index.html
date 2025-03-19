@@ -297,17 +297,39 @@
             flex-direction: column;
             align-items: center;
             text-align: justify;
-            gap: 1rem;
+            gap: 0.5rem;
             background-color: white;
-            padding: 2rem;
+            padding: 1rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%; 
+            justify-content: center; 
         }
 
         .solution-item img {
             width: 100%;
+            max-width: 600px;
+            height: auto;
+            object-fit: contain;
             border-radius: 5px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+            .splide__slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+        }
+
+        .splide__track {
+            display: flex;
+            align-items: center;
+        }
+
+        .splide__list {
+            align-items: center;
+            height: auto !important;
         }
 
         .team-cards {
@@ -501,7 +523,7 @@
                             </p>
                         </li>
                         <li class="splide__slide solution-item">
-                            <img src="https://www.csshop.fr/wp-content/uploads/2024/10/tronconneuse-img-400x250.jpeg"
+                            <img src="https://github.com/totox35/pageHTML_correctexam_projet4A/blob/main/similar-responses.png?raw=true"
                                 alt="Interface intuitive">
                             <h3 data-i18n="solutions.interface.title">Regroupement de réponses similaires</h3>
                             <p data-i18n="solutions.interface.description">

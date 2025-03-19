@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CorrectExam - Automatisation de correction d'examens</title>
-    <link rel="icon" href="https://correctexam.github.io/corrigeExamFront/logo-jhipster.6125d9b31ded8344.png" type="image/x-icon">
+    <link rel="icon" href="https://correctexam.github.io/corrigeExamFront/logo-jhipster.6125d9b31ded8344.png"
+        type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
@@ -29,6 +30,11 @@
             line-height: 1.6;
         }
 
+        .logo-title {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
         .container {
             width: 90%;
             max-width: 1200px;
@@ -43,6 +49,11 @@
             left: 0;
             right: 0;
             z-index: 1000;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .header-hidden {
+            transform: translateY(-100%);
         }
 
         .navbar {
@@ -197,11 +208,19 @@
             margin-bottom: 1rem;
         }
 
-        .hero-correct {
+        .hero-correct1 {
             color: white;
-            font-size: 5rem;
+            font-size: 3rem;
             font-weight: normal;
-            text-transform: lowercase;
+            text-align: left;
+            letter-spacing: 2px;
+        }
+
+        .hero-correct2 {
+            color: white;
+            font-size: 3rem;
+            font-weight: normal;
+            text-align: left;
             letter-spacing: 2px;
         }
 
@@ -292,18 +311,22 @@
         }
 
         .team-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 2rem;
             margin-top: 2rem;
+            justify-content: center;
+            /* Centre les éléments horizontalement */
         }
 
         .team-card {
+            flex: 0 0 auto;
+            /* Empêche les cartes de s'étirer */
+            width: 250px;
             background-color: var(--light-color);
             border-radius: 16px;
             overflow: hidden;
             text-align: center;
-            width: 250px;
         }
 
         .team-card img {
@@ -312,6 +335,10 @@
             object-position: center;
             background-position: center;
             clip-path: circle(45% at 50% 50%);
+        }
+
+        .entity {
+            padding-top: 6%;
         }
 
         .entity h2 {
@@ -327,6 +354,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+            justify-items: center;
         }
 
         .entity-card {
@@ -339,12 +367,28 @@
             padding: 2rem;
             border-radius: 16px;
         }
+
         .entity-card img {
             height: 90px;
             width: 250px;
         }
+
         .entity-card p {
             margin-top: 1rem;
+        }
+
+        .splide__pagination__page {
+            background: #ccc !important;
+            /* Couleur par défaut des points */
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+
+        .splide__pagination__page.is-active {
+            background: var(--primary-color) !important;
+            /* Utilise la couleur primaire (#0d89ec) */
+            transform: scale(1.25);
+            opacity: 1;
         }
     </style>
 </head>
@@ -355,11 +399,11 @@
             <nav class="navbar">
                 <div class="logo">
                     <img src="https://correctexam.github.io/corrigeExamFront/logo-jhipster.6125d9b31ded8344.png">
-                    <h1>CorrectExam</h1>
+                    <h1><a class="logo-title" href="https://correctexam.github.io/" target="_blank">CorrectExam</a></h1>
                 </div>
                 <ul class="nav-links">
                     <a href="#context" data-i18n="nav.context">Contexte</a>
-                    <a href="#solutions" data-i18n="nav.solutions">Solutions</a>
+                    <a href="#solutions" data-i18n="nav.solutions">Nos solutions</a>
                     <a href="#team" data-i18n="nav.team">Équipe</a>
                     <a href="#technologies" data-i18n="nav.technologies">Technologies</a>
                     <button class="language-switch" onclick="switchLanguage()">
@@ -375,8 +419,10 @@
         <div class="hero-cutout"></div>
         <div class="container">
             <div class="hero-title">
-                <span class="hero-correct">correct</span>
-                <span class="hero-exam">Exam</span>
+                <span class="hero-correct1">Amélioration des</span>
+                <span class="hero-correct2">fonctionnalités de</span>
+
+                <span class="hero-exam">CorrectExam</span>
             </div>
             <h2 data-i18n="hero.title">Automatisez la correction de vos examens</h2>
         </div>
@@ -384,10 +430,9 @@
 
     <section id="context">
         <div class="container">
-            <h2 class="section-title" data-i18n="context.title"
-                style="display: flex; align-items: flex-start; gap: 8px; text-align: start; white-space: nowrap;">
-                Bienvenue sur<span style="color: #0d89ec;">
-                    CorrectExam 2.0</span></h2>
+            <h2 class="section-title" style="display: flex; align-items: flex-start; gap: 8px; text-align: start; white-space: nowrap;">
+                <span data-i18n="context.title">Bienvenue sur</span><span style="color: #0d89ec;">CorrectExam 2.0</span>
+            </h2>
             <div class="intro-content">
                 <p data-i18n="context.description">CorrectExam est une application open-source développée par des
                     membres de l'Université de Rennes. Son objectif est d'améliorer l'efficacité de la correction des
@@ -404,8 +449,9 @@
                     commentaires des enseignants directement sur l'application.
                     <br>
                     <br>
-                    Dans le cadre de notre parcours universitaire, nous avons pour projet de développer de nouvelles 
-                    fonctionnalités pour l’application, visant à améliorer l’expérience utilisateur et à optimiser le processus de correction.
+                    Dans le cadre de notre parcours universitaire, nous avons pour projet de développer de nouvelles
+                    fonctionnalités pour l’application, visant à améliorer l’expérience utilisateur et à optimiser le
+                    processus de correction.
                 </p>
                 <div class="video-container">
                     <video style="width: 640px; height: 360px; left: 0px; top: 0px;" tabindex="-1" aria-hidden="true"
@@ -498,26 +544,7 @@
             <div class="team-cards">
                 <div class="team-card">
                     <div class="team-info">
-                        <h3>Thomas Girault</h3>
-                        <p data-i18n="team.role1">truc</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-info">
-                        <h3>Thomas Ledret</h3>
-                        <p data-i18n="team.role2">truc</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-info">
-                        <h3>Pinar Tur</h3>
-                        <p data-i18n="team.role3">truc</p>
+                        <h3>Léo Breidenstein</h3>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                         </div>
@@ -526,25 +553,15 @@
                 <div class="team-card">
                     <div class="team-info">
                         <h3>Louis Descamps</h3>
-                        <p data-i18n="team.role1">truc</p>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-info">
-                        <h3>Léo Breidenstein</h3>
-                        <p data-i18n="team.role1">truc</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/louis-descamps-b691b32b4/" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="team-card">
                     <div class="team-info">
                         <h3>Jeanne Dubois</h3>
-                        <p data-i18n="team.role1">truc</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                         </div>
@@ -553,7 +570,6 @@
                 <div class="team-card">
                     <div class="team-info">
                         <h3>Aidan Gallagher</h3>
-                        <p data-i18n="team.role1">truc</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                         </div>
@@ -561,45 +577,180 @@
                 </div>
                 <div class="team-card">
                     <div class="team-info">
-                        <h3> Bertrand Coüasnon</h3>
-                        <p data-i18n="team.role1">truc</p>
+                        <h3>Thomas Girault</h3>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/thomas-girault-652474231/" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Thomas Ledret</h3>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/thomas-le-dret-a77357226/" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Pınar Tür</h3>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/p%C4%B1nar-t%C3%BCr-b852b8228/" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team-supervisors">
+        <div class="container">
+            <h2 class="section-title" data-i18n="team.supervisors.title"">Nos encadrants</h2>
+            <div class=" team-cards">
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Bertrand Coüasnon</h3>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Alexandre GIMENEZ PUIG</h3>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Laura Louboutin</h3>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>Arnaud ROGER</h3>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+        <div class="entity">
+            <h2 class="section-title" data-i18n="team.partners.title">Au cours de l'année, nous avons collaboré avec
+                différents acteurs informatiques du bassin rennais,
+                qui nous ont permis d'utiliser leurs outils et d'améliorer notre gestion de projet.</h2>
+            <div class="entity-cards">
+                <div class="entity-card">
+                    <img src="https://res.cloudinary.com/emg-prod/image/upload/f_auto,q_auto/v1/HtmlPages/HtmlPage23115/sopra-sterialogo_tso21.png"
+                        alt="Logo Sopesteria">
+                    <p data-i18n="entity.sopra">Plusieurs employés de Sopra Steria nous ont accompagnés dans la
+                        gestion du projet en contexte agile,
+                        notamment en participant régulièrement à des réunions et aux rétrospectives Scrum.</p>
+                </div>
+                <div class="entity-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/3/3d/LogoIRISA-web.png/250px-LogoIRISA-web.png"
+                        alt="Logo Irisa">
+                    <p data-i18n="entity.irisa">L'IRISA nous a fourni le module MLT, une architecture de réseau
+                        neuronal légère dédiée à
+                        la reconnaissance de texte manuscrit. Basée sur cinq couches convolutives, elle extrait les
+                        caractéristiques visuelles
+                        du texte, comme les contours et les formes.
+                    </p>
+                </div>
+                <div class="entity-card">
+                    <img src="https://correctexam.github.io/corrigeExamFront/logo-jhipster.6125d9b31ded8344.png"
+                        alt="Logo correctExam">
+                    <p data-i18n="entity.correctexam">Nous avons échangé et organisé plusieurs rendez-vous avec
+                        l'équipe de CorrectEam
+                        pour discuter des fonctionnalités à ajouter, ainsi que de la manière dont nous allions les
+                        intégrer.</p>
+                </div>
             </div>
-            <div class="entity">
-                <h2>Au cours de l'année, nous avons collaboré avec différents acteurs informatiques du bassin rennais, 
-                    qui nous ont permis d'utiliser leurs outils et d'améliorer notre gestion de projet.</h2>
-                <div class="entity-cards">
-                    <div class="entity-card">
-                        <img src="https://res.cloudinary.com/emg-prod/image/upload/f_auto,q_auto/v1/HtmlPages/HtmlPage23115/sopra-sterialogo_tso21.png" alt="Logo Sopesteria">
-                        <p data-i18n="entity.sopra">Plusieurs employés de Sopra Steria nous ont accompagnés dans la gestion du projet en contexte agile,
-                            notamment en participant régulièrement à des réunions et aux rétrospectives Scrum.</p>
-                    </div>
-                    <div class="entity-card">
-                        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/3/3d/LogoIRISA-web.png/250px-LogoIRISA-web.png" alt="Logo Irisa">
-                        <p data-i18n="entity.irisa">L'IRISA nous a fourni le module MLT, une architecture de réseau neuronal légère dédiée à
-                             la reconnaissance de texte manuscrit. Basée sur cinq couches convolutives, elle extrait les caractéristiques visuelles 
-                             du texte, comme les contours et les formes.
-                        </p>
-                    </div>
-                    <div class="entity-card">
-                        <img src="https://correctexam.github.io/corrigeExamFront/logo-jhipster.6125d9b31ded8344.png" alt="Logo correctExam">
-                        <p data-i18n="entity.correctexam">Nous avons échangé et organisé plusieurs rendez-vous avec l'équipe de CorrectEam 
-                            pour discuter des fonctionnalités à ajouter, ainsi que de la manière dont nous allions les intégrer.</p>
-                    </div>
-                </div>  
-            </div>
+        </div>
         </div>
     </section>
 
 </body>
+
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
 
+
 <script>
+    const translations = {
+        'fr': {
+            'nav.context': 'Contexte',
+            'nav.solutions': 'Solutions',
+            'nav.team': 'Équipe',
+            'nav.technologies': 'Technologies',
+            'hero.title': 'Automatisez la correction de vos examens',
+            'hero.correct1': 'Amélioration des',
+            'hero.correct2': 'fonctionnalités de',
+            'context.title': 'Bienvenue sur',
+            'context.title.CE': 'CorrectExam',
+            'context.description': 'CorrectExam est une application open-source développée par des membres de l\'Université de Rennes. Son objectif est d\'améliorer l\'efficacité de la correction des examens en automatisant une partie du processus.\n\nLes professeurs scannent les copies des élèves et les corrigent de manière transversale via l\'application. Ils peuvent attribuer des notes, ajouter des commentaires et des annotations, puis valider la note finale.\n\nL\'application permet également de générer des statistiques sur les résultats des élèves et de stocker leurs copies de manière sécurisée. Les élèves peuvent ensuite consulter leur copie et les commentaires des enseignants directement sur l\'application.\n\nDans le cadre de notre parcours universitaire, nous avons pour projet de développer de nouvelles fonctionnalités pour l\'application, visant à améliorer l\'expérience utilisateur et à optimiser le processus de correction.',
+            'context.time.title': 'Gain de temps',
+            'context.time.description': 'Les enseignants passent des heures à corriger manuellement les examens, un processus fastidieux qui pourrait être optimisé.',
+            'context.efficiency.title': 'Efficacité',
+            'context.efficiency.description': 'La correction manuelle est sujette à des erreurs et des incohérences, ce qui peut affecter la qualité de l\'évaluation.',
+            'context.data.title': 'Gestion des données',
+            'context.data.description': 'Le traitement et l\'analyse des résultats d\'examens nécessitent une organisation efficace des données.',
+            'solutions.title': 'Nos Solutions',
+            'solutions.recognition.title': 'Reconnaissance de texte',
+            'solutions.recognition.description': 'Notre applications utilise des algorithmes de reconnaissance d\'écriture manuscrite tel que MLT et DAN pour identifier les réponses des étudiants. On stocke ensuite les transcriptions dans une base de données.',
+            'solutions.interface.title': 'Regroupement de réponses similaires',
+            'solutions.interface.description': 'Notre application simplifie la correction en regroupant les réponses similaires et en les affichant sur une interface intuitive. L\'enseignant peut ainsi attribuer une note et un commentaire à chaque groupe de réponses. Il a également la possibilité d\'exclure certaines réponses du groupe si nécessaire.',
+            'solutions.analytics.title': 'Correction automatique',
+            'solutions.analytics.description': 'Nous proposons une correction automatique des examens en utilisant un système RAG (Retrieval-Augmented Generation). Ce RAG est alimenté par des documents issus du cours, lui permettant d\'extraire les informations pertinentes pour proposer une correction. Il s\'appuie ensuite sur un LLM, Lama 3.1, pour formuler une évaluation cohérente. L\'enseignant effectue une vérification finale avant de valider les notes.',
+            'team.title': 'Notre Équipe',
+            'team.supervisors.title': 'Nos encadrants',
+            'team.partners.title': 'Au cours de l\'année, nous avons collaboré avec différents acteurs informatiques du bassin rennais, qui nous ont permis d\'utiliser leurs outils et d\'améliorer notre gestion de projet.',
+            'entity.sopra': 'Plusieurs employés de Sopra Steria nous ont accompagnés dans la gestion du projet en contexte agile, notamment en participant régulièrement à des réunions et aux rétrospectives Scrum.',
+            'entity.irisa': 'L\'IRISA nous a fourni le module MLT, une architecture de réseau neuronal légère dédiée à la reconnaissance de texte manuscrit. Basée sur cinq couches convolutives, elle extrait les caractéristiques visuelles du texte, comme les contours et les formes.',
+            'entity.correctexam': 'Nous avons échangé et organisé plusieurs rendez-vous avec l\'équipe de CorrectEam pour discuter des fonctionnalités à ajouter, ainsi que de la manière dont nous allions les intégrer.'
+        },
+        'en': {
+            'nav.context': 'Context',
+            'nav.solutions': 'Solutions',
+            'nav.team': 'Team',
+            'nav.technologies': 'Technologies',
+            'hero.title': 'Automate your exam grading',
+            'hero.correct1': 'Improving',
+            'hero.correct2': 'features of',
+            'context.title': 'Welcome to',
+            'context.title.CE': 'CorrectExam',
+            'context.description': 'CorrectExam is an open-source application developed by members of the University of Rennes. Its goal is to improve exam grading efficiency by automating part of the process.\n\nTeachers scan student papers and grade them transversally through the application. They can assign grades, add comments and annotations, then validate the final grade.\n\nThe application also allows generating statistics on student results and securely storing their papers. Students can then view their paper and teacher comments directly on the application.\n\nAs part of our university curriculum, our project aims to develop new features for the application, improving user experience and optimizing the grading process.',
+            'context.time.title': 'Time Saving',
+            'context.time.description': 'Teachers spend hours manually grading exams, a tedious process that could be optimized.',
+            'context.efficiency.title': 'Efficiency',
+            'context.efficiency.description': 'Manual grading is prone to errors and inconsistencies, which can affect evaluation quality.',
+            'context.data.title': 'Data Management',
+            'context.data.description': 'Processing and analyzing exam results requires efficient data organization.',
+            'solutions.title': 'Our Solutions',
+            'solutions.recognition.title': 'Text Recognition',
+            'solutions.recognition.description': 'Our application uses handwriting recognition algorithms such as MLT and DAN to identify student responses. The transcriptions are then stored in a database.',
+            'solutions.interface.title': 'Similar Answer Grouping',
+            'solutions.interface.description': 'Our application simplifies grading by grouping similar answers and displaying them on an intuitive interface. Teachers can assign grades and comments to each group of answers. They can also exclude certain answers from the group if needed.',
+            'solutions.analytics.title': 'Automatic Grading',
+            'solutions.analytics.description': 'We offer automatic exam grading using a RAG (Retrieval-Augmented Generation) system. This RAG is fed with course documents, allowing it to extract relevant information for grading. It then uses a LLM, Lama 3.1, to formulate a coherent evaluation. The teacher performs a final verification before validating the grades.',
+            'team.title': 'Our Team',
+            'team.supervisors.title': 'Our Supervisors',
+            'team.partners.title': 'Throughout the year, we collaborated with various IT actors in the Rennes area, who allowed us to use their tools and improve our project management.',
+            'entity.sopra': 'Several Sopra Steria employees assisted us in managing the project in an agile context, particularly by regularly participating in meetings and Scrum retrospectives.',
+            'entity.irisa': 'IRISA provided us with the MLT module, a lightweight neural network architecture dedicated to handwriting recognition. Based on five convolutional layers, it extracts visual characteristics of text, such as contours and shapes.',
+            'entity.correctexam': 'We exchanged and organized several meetings with the CorrectEam team to discuss features to add and how to integrate them.'
+        }
+    };
 
     let currentLanguage = 'fr';
 
@@ -637,12 +788,32 @@
             type: 'loop',
             perPage: 1,
             autoplay: true,
-            interval: 3000,
+            interval: 10000,
             pauseOnHover: false,
             pauseOnFocus: false,
             arrows: true,
             pagination: true
         }).mount();
+    });
+</script>
+
+<script>
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    const scrollThreshold = 100; // Nombre de pixels à scroller avant que le header ne se cache
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+            // Scroll vers le bas
+            header.classList.add('header-hidden');
+        } else {
+            // Scroll vers le haut
+            header.classList.remove('header-hidden');
+        }
+
+        lastScrollTop = scrollTop;
     });
 </script>
 

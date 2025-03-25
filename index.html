@@ -280,6 +280,13 @@
             font-size: 3rem;
 
         }
+        
+        #solutions-carousel {
+            width: 100%;
+            max-width: 1000px;  /* Limite la largeur maximale */
+            margin: 0 auto;     /* Centre le carousel */
+            overflow: hidden;   /* Cache tout débordement */
+        }
 
         /* Solutions Section */
         .solutions {
@@ -299,11 +306,13 @@
             text-align: justify;
             gap: 0.5rem;
             background-color: white;
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            height: 100%; 
-            justify-content: center; 
+            width: 90%;         /* Réduit la largeur à 90% */
+            margin: 0 auto;     /* Centre l'élément */
+            height: auto;
+            justify-content: center;
         }
 
         .solution-item img {
@@ -315,16 +324,18 @@
             margin-bottom: 0.5rem;
         }
 
-            .splide__slide {
+        .splide__track {
+            overflow: hidden;   /* Cache tout débordement */
+            padding: 1rem 0;
+        }
+
+        /* Ajuster les slides individuels */
+        .splide__slide {
             display: flex;
             align-items: center;
             justify-content: center;
             height: auto;
-        }
-
-        .splide__track {
-            display: flex;
-            align-items: center;
+            padding: 0 1rem;    /* Ajoute un padding horizontal */
         }
 
         .splide__list {
@@ -485,20 +496,17 @@
                 <div class="problem-card">
                     <i class="fas fa-clock"></i>
                     <h3 data-i18n="context.time.title">Gain de temps</h3>
-                    <p data-i18n="context.time.description">Les enseignants passent des heures à corriger manuellement
-                        les examens, un processus fastidieux qui pourrait être optimisé.</p>
+                    <p data-i18n="context.time.description">Les enseignants peuvent corriger leurs examens plus rapidement via un procédé optimisé</p>
                 </div>
                 <div class="problem-card">
                     <i class="fas fa-chart-line"></i>
                     <h3 data-i18n="context.efficiency.title">Efficacité</h3>
-                    <p data-i18n="context.efficiency.description">La correction manuelle est sujette à des erreurs et
-                        des incohérences, ce qui peut affecter la qualité de l'évaluation.</p>
+                    <p data-i18n="context.efficiency.description">Des corrections uniformes et comparatives des copies pour une meilleure qualité d'évaluation</p>
                 </div>
                 <div class="problem-card">
                     <i class="fas fa-database"></i>
                     <h3 data-i18n="context.data.title">Gestion des données</h3>
-                    <p data-i18n="context.data.description">Le traitement et l'analyse des résultats d'examens
-                        nécessitent une organisation efficace des données.</p>
+                    <p data-i18n="context.data.description">Un visuel intuitif et épuré, permettant d'organiser ses examens facilement et d'analyser les résultats facilement</p>
                 </div>
             </div>
         </div>
@@ -635,15 +643,15 @@
                     <div class="team-info">
                         <h3>Bertrand Coüasnon</h3>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://people.irisa.fr/Bertrand.Couasnon/" target="_blank"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="team-card">
                     <div class="team-info">
-                        <h3>Alexandre GIMENEZ PUIG</h3>
+                        <h3>Alexandre Gimenez Puig</h3>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/alexandre-gimenez-puig-07837924b/" target="_blank"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
@@ -651,15 +659,15 @@
                     <div class="team-info">
                         <h3>Laura Louboutin</h3>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/laura-louboutin-3447922b0/" target="_blank"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="team-card">
                     <div class="team-info">
-                        <h3>Arnaud ROGER</h3>
+                        <h3>Arnaud Roger</h3>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/arnaud-roger-69a673143/" target="_blank"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
@@ -720,11 +728,11 @@
             'context.title.CE': 'CorrectExam',
             'context.description': 'CorrectExam est une application open-source développée par des membres de l\'Université de Rennes. Son objectif est d\'améliorer l\'efficacité de la correction des examens en automatisant une partie du processus.\n\nLes professeurs scannent les copies des élèves et les corrigent de manière transversale via l\'application. Ils peuvent attribuer des notes, ajouter des commentaires et des annotations, puis valider la note finale.\n\nL\'application permet également de générer des statistiques sur les résultats des élèves et de stocker leurs copies de manière sécurisée. Les élèves peuvent ensuite consulter leur copie et les commentaires des enseignants directement sur l\'application.\n\nDans le cadre de notre parcours universitaire, nous avons pour projet de développer de nouvelles fonctionnalités pour l\'application, visant à améliorer l\'expérience utilisateur et à optimiser le processus de correction.',
             'context.time.title': 'Gain de temps',
-            'context.time.description': 'Les enseignants passent des heures à corriger manuellement les examens, un processus fastidieux qui pourrait être optimisé.',
+            'context.time.description': 'Les enseignants peuvent corriger leurs examens plus rapidement via un procédé optimisé',
             'context.efficiency.title': 'Efficacité',
-            'context.efficiency.description': 'La correction manuelle est sujette à des erreurs et des incohérences, ce qui peut affecter la qualité de l\'évaluation.',
+            'context.efficiency.description': 'Des corrections uniformes et comparatives des copies pour une meilleure qualité d\'évaluation',
             'context.data.title': 'Gestion des données',
-            'context.data.description': 'Le traitement et l\'analyse des résultats d\'examens nécessitent une organisation efficace des données.',
+            'context.data.description': 'Un visuel intuitif et épuré, permettant d\'organiser ses examens facilement et d\'analyser les résultats facilement',
             'solutions.recognition.title': 'Reconnaissance de texte',
             'solutions.recognition.description': 'Notre applications utilise des algorithmes de reconnaissance d\'écriture manuscrite tel que MLT et DAN pour identifier les réponses des étudiants. On stocke ensuite les transcriptions dans une base de données.',
             'solutions.interface.title': 'Regroupement de réponses similaires',
@@ -749,11 +757,11 @@
             'context.title.CE': 'CorrectExam',
             'context.description': 'CorrectExam is an open-source application developed by members of the University of Rennes. Its goal is to improve exam grading efficiency by automating part of the process.\n\nTeachers scan student papers and grade them transversally through the application. They can assign grades, add comments and annotations, then validate the final grade.\n\nThe application also allows generating statistics on student results and securely storing their papers. Students can then view their paper and teacher comments directly on the application.\n\nAs part of our university curriculum, our project aims to develop new features for the application, improving user experience and optimizing the grading process.',
             'context.time.title': 'Time Saving',
-            'context.time.description': 'Teachers spend hours manually grading exams, a tedious process that could be optimized.',
+            'context.time.description': 'Teachers can mark their exams more quickly thanks to an optimised process',
             'context.efficiency.title': 'Efficiency',
-            'context.efficiency.description': 'Manual grading is prone to errors and inconsistencies, which can affect evaluation quality.',
+            'context.efficiency.description': 'Uniform and comparative marking of papers to improve the quality of assessment',
             'context.data.title': 'Data Management',
-            'context.data.description': 'Processing and analyzing exam results requires efficient data organization.',
+            'context.data.description': 'Intuitive, uncluttered design, making it easy to organise your tests and analyse your results',
             'solutions.recognition.title': 'Text Recognition',
             'solutions.recognition.description': 'Our application uses handwriting recognition algorithms such as MLT and DAN to identify student responses. The transcriptions are then stored in a database.',
             'solutions.interface.title': 'Similar Answer Grouping',

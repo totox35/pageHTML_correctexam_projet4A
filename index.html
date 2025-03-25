@@ -50,6 +50,7 @@
             right: 0;
             z-index: 1000;
             transition: transform 0.4s ease-in-out;
+            user-select: none;
         }
 
         .header-hidden {
@@ -176,6 +177,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            user-select: none;
             /* Important pour éviter que l'image ne déborde */
         }
 
@@ -192,12 +194,14 @@
             /* Nouvelle découpe avec des bords plus arrondis */
             clip-path: ellipse(70% 80% at 70% 50%);
             z-index: 1;
+            user-select: none;
         }
 
         /* Assurez-vous que le contenu est au-dessus de l'image */
         .hero .container {
             position: relative;
             z-index: 2;
+            user-select: none;
         }
 
         .hero-title {
@@ -336,6 +340,7 @@
             justify-content: center;
             height: auto;
             padding: 0 1rem;    /* Ajoute un padding horizontal */
+            padding: 2rem;
         }
 
         .splide__list {
@@ -383,11 +388,11 @@
         }
 
         .entity-cards {
-            display: grid;
+            display: flex;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
-            justify-items: center;
+            justify-content: center;
         }
 
         .entity-card {

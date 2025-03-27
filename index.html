@@ -186,13 +186,11 @@
             top: 0;
             right: 0;
             width: 45%;
-            /* Augmenté de 50% à 65% pour une découpe plus grande */
             height: 100%;
             background-image: url('https://github.com/totox35/pageHTML_correctexam_projet4A/blob/main/examens-etudiants.jpeg?raw=true');
             background-size: cover;
             background-position: center;
-            /* Nouvelle découpe avec des bords plus arrondis */
-            clip-path: ellipse(70% 80% at 70% 50%);
+            clip-path: ellipse(60% 80% at 70% 50%);
             z-index: 1;
             user-select: none;
         }
@@ -284,18 +282,73 @@
             font-size: 3rem;
 
         }
-        
+
+        .objective-section {
+        background: linear-gradient(135deg, var(--light-color), #ffffff);
+        padding: 4rem 2rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        margin-top: 3rem;
+        text-align: center;
+    }
+
+    .objective-section .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .objective-section h2 {
+
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .objective-section h2:after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: 1rem auto 0;
+        border-radius: 2px;
+    }
+
+    .objective-content {
+        font-size: 1.2rem;
+        color: var(--secondary-color);
+        line-height: 1.8;
+        text-align: justify;
+    }
+
+    .objective-divider {
+        height: 2px;
+        background-color: var(--primary-color);
+        margin: 2rem 0;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .objective-content p {
+        margin-bottom: 1.5rem;
+    }
+
+
         #solutions-carousel {
             width: 100%;
-            max-width: 1000px;  /* Limite la largeur maximale */
-            margin: 0 auto;     /* Centre le carousel */
-            overflow: hidden;   /* Cache tout débordement */
+            max-width: 1000px;
+            /* Limite la largeur maximale */
+            margin: 0 auto;
+            /* Centre le carousel */
+            overflow: hidden;
+            /* Cache tout débordement */
         }
 
         /* Solutions Section */
         .solutions {
             background-color: var(--light-color);
         }
+
 
         .solution-items {
             display: grid;
@@ -313,15 +366,17 @@
             padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            width: 90%;         /* Réduit la largeur à 90% */
-            margin: 0 auto;     /* Centre l'élément */
+            width: 100%;
+            /* Réduit la largeur à 90% */
+            margin: 0 auto;
+            /* Centre l'élément */
             height: auto;
             justify-content: center;
         }
 
         .solution-item img {
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             height: auto;
             object-fit: contain;
             border-radius: 5px;
@@ -329,18 +384,24 @@
         }
 
         .splide__track {
-            overflow: hidden;   /* Cache tout débordement */
+            overflow: hidden;
+            /* Cache tout débordement */
             padding: 1rem 0;
         }
 
-        /* Ajuster les slides individuels */
         .splide__slide {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 530px;
-            padding: 0 1rem;    /* Ajoute un padding horizontal */
+            height: 700px;
+            padding: 0 1rem;
             margin: 0 10px;
+        }
+
+        .splide__slide img {
+            max-height: 500px;
+            max-width: 100%;
+            width: auto;
         }
 
         .splide__list {
@@ -474,8 +535,9 @@
 
     <section id="context">
         <div class="container">
-            <h2 class="section-title" style="display: flex; align-items: flex-start; gap: 8px; text-align: start; white-space: nowrap;">
-                <span data-i18n="context.title">Bienvenue sur</span><span style="color: #0d89ec;">CorrectExam 2.0</span>
+            <h2 class="section-title"
+                style="display: flex; align-items: flex-start; gap: 8px; text-align: start; white-space: nowrap;">
+                <span data-i18n="context.title">C'est quoi</span><span style="color: #0d89ec;">CorrectExam ?</span>
             </h2>
             <div class="intro-content">
                 <p data-i18n="context.description">CorrectExam est une application open-source développée par des
@@ -491,34 +553,55 @@
                     L'application permet également de générer des statistiques sur les résultats des élèves et de
                     stocker leurs copies de manière sécurisée. Les élèves peuvent ensuite consulter leur copie et les
                     commentaires des enseignants directement sur l'application.
-                    <br>
-                    <br>
-                    Dans le cadre de notre parcours universitaire, nous avons pour projet de développer de nouvelles
-                    fonctionnalités pour l’application, visant à améliorer l’expérience utilisateur et à optimiser le
-                    processus de correction.
                 </p>
                 <div class="video-container" style="display: flex; flex-direction: column; text-align: center;">
-                    <iframe width="640" height="360" src="https://www.youtube.com/embed/bYTBlTg37RM" title="démonstration de l&#39;application CorrectExam (https://correctexam.github.io/)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    <p data-i18n="context.video.caption" style="font-style: italic; margin-top: 1rem;">Démonstration de l'application avant nos ajouts</p>
+                    <iframe width="640" height="360" src="https://www.youtube.com/embed/bYTBlTg37RM"
+                        title="démonstration de l&#39;application CorrectExam (https://correctexam.github.io/)"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p data-i18n="context.video.caption" style="font-style: italic; margin-top: 1rem;">Démonstration de
+                        l'application avant nos ajouts</p>
                 </div>
-        
+
             </div>
             <div class="problem-cards">
                 <div class="problem-card">
                     <i class="fas fa-clock"></i>
                     <h3 data-i18n="context.time.title">Gain de temps</h3>
-                    <p data-i18n="context.time.description">Les enseignants peuvent corriger leurs examens plus rapidement via un procédé optimisé</p>
+                    <p data-i18n="context.time.description">Les enseignants peuvent corriger leurs examens plus
+                        rapidement via un procédé optimisé</p>
                 </div>
                 <div class="problem-card">
                     <i class="fas fa-chart-line"></i>
                     <h3 data-i18n="context.efficiency.title">Efficacité</h3>
-                    <p data-i18n="context.efficiency.description">Des corrections uniformes et comparatives des copies pour une meilleure qualité d'évaluation</p>
+                    <p data-i18n="context.efficiency.description">Des corrections uniformes et comparatives des copies
+                        pour une meilleure qualité d'évaluation</p>
                 </div>
                 <div class="problem-card">
                     <i class="fas fa-database"></i>
                     <h3 data-i18n="context.data.title">Gestion des données</h3>
-                    <p data-i18n="context.data.description">Un visuel intuitif et épuré, permettant d'organiser ses examens facilement et d'analyser les résultats facilement</p>
+                    <p data-i18n="context.data.description">Un visuel intuitif et épuré, permettant d'organiser ses
+                        examens facilement et d'analyser les résultats facilement</p>
                 </div>
+            </div>
+        </div>
+    </section>
+    <section id="objective" class="objective-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="objective.title">Objectif du projet</h2>
+            <div class="objective-content">
+                <p data-i18n="objective.description">
+                    L'objectif principal de ce projet est de rendre la correction des examens plus rapide, efficace et précise grâce à l'intégration de technologies avancées.
+                    Nous utilisons des outils comme la reconnaissance optique de caractères (OCR) pour extraire automatiquement les réponses des copies manuscrites,
+                    et des systèmes de génération augmentée par récupération (RAG) pour proposer des corrections automatiques basées sur les documents du cours.
+                </p>
+                <div class="objective-divider"></div>
+                <p data-i18n="objective.additional">
+                    En combinant ces technologies, nous visons à offrir une solution intuitive et puissante qui simplifie le travail des enseignants,
+                    tout en garantissant une évaluation cohérente et objective des étudiants. Ce projet s'inscrit dans le cadre de notre parcours universitaire,
+                    avec pour ambition d'améliorer l'expérience utilisateur et d'optimiser le processus de correction.
+                </p>
             </div>
         </div>
     </section>
@@ -648,13 +731,14 @@
 
     <section id="team-supervisors">
         <div class="container">
-            <h2 class="section-title" data-i18n="team.supervisors.title"">Nos encadrants</h2>
+            <h2 class="section-title" data-i18n="team.supervisors.title">Nos encadrants</h2>
             <div class=" team-cards">
                 <div class="team-card">
                     <div class="team-info">
                         <h3>Bertrand Coüasnon</h3>
                         <div class="social-links">
-                            <a href="https://people.irisa.fr/Bertrand.Couasnon/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://people.irisa.fr/Bertrand.Couasnon/" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
@@ -662,7 +746,8 @@
                     <div class="team-info">
                         <h3>Alexandre Gimenez Puig</h3>
                         <div class="social-links">
-                            <a href="https://www.linkedin.com/in/alexandre-gimenez-puig-07837924b/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/alexandre-gimenez-puig-07837924b/" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
@@ -670,7 +755,8 @@
                     <div class="team-info">
                         <h3>Laura Louboutin</h3>
                         <div class="social-links">
-                            <a href="https://www.linkedin.com/in/laura-louboutin-3447922b0/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/laura-louboutin-3447922b0/" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
@@ -678,7 +764,8 @@
                     <div class="team-info">
                         <h3>Arnaud Roger</h3>
                         <div class="social-links">
-                            <a href="https://www.linkedin.com/in/arnaud-roger-69a673143/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/arnaud-roger-69a673143/" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
@@ -735,7 +822,7 @@
             'hero.title': 'Automatisez la correction de vos examens',
             'hero.correct1': 'Amélioration des',
             'hero.correct2': 'fonctionnalités de',
-            'context.title': 'Bienvenue sur',
+            'context.title': 'C\'est quoi',
             'context.title.CE': 'CorrectExam',
             'context.description': 'CorrectExam est une application open-source développée par des membres de l\'Université de Rennes. Son objectif est d\'améliorer l\'efficacité de la correction des examens en automatisant une partie du processus.\n\nLes professeurs scannent les copies des élèves et les corrigent de manière transversale via l\'application. Ils peuvent attribuer des notes, ajouter des commentaires et des annotations, puis valider la note finale.\n\nL\'application permet également de générer des statistiques sur les résultats des élèves et de stocker leurs copies de manière sécurisée. Les élèves peuvent ensuite consulter leur copie et les commentaires des enseignants directement sur l\'application.\n\nDans le cadre de notre parcours universitaire, nous avons pour projet de développer de nouvelles fonctionnalités pour l\'application, visant à améliorer l\'expérience utilisateur et à optimiser le processus de correction.',
             'context.time.title': 'Gain de temps',
@@ -765,7 +852,7 @@
             'hero.title': 'Automate your exam grading',
             'hero.correct1': 'Improving',
             'hero.correct2': 'features of',
-            'context.title': 'Welcome to',
+            'context.title': 'What is',
             'context.title.CE': 'CorrectExam',
             'context.description': 'CorrectExam is an open-source application developed by members of the University of Rennes. Its goal is to improve exam grading efficiency by automating part of the process.\n\nTeachers scan student papers and grade them transversally through the application. They can assign grades, add comments and annotations, then validate the final grade.\n\nThe application also allows generating statistics on student results and securely storing their papers. Students can then view their paper and teacher comments directly on the application.\n\nAs part of our university curriculum, our project aims to develop new features for the application, improving user experience and optimizing the grading process.',
             'context.time.title': 'Time Saving',

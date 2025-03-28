@@ -284,13 +284,13 @@
         }
 
         .objective-section {
-        background: linear-gradient(135deg, var(--light-color), #ffffff);
-        padding: 4rem 2rem;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        margin-top: 3rem;
-        text-align: center;
-    }
+            background: linear-gradient(135deg, var(--light-color), #ffffff);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 3rem;
+            text-align: center;
+        }
 
     .objective-section .container {
         max-width: 900px;
@@ -511,6 +511,7 @@
                     <a href="#context" data-i18n="nav.context">Contexte</a>
                     <a href="#solutions" data-i18n="nav.solutions">Nos solutions</a>
                     <a href="#team" data-i18n="nav.team">Équipe</a>
+                    <a href="#team-supervisors" data-i18n="nav.team-supervisors">Encadrants</a>
                     <button class="language-switch" onclick="switchLanguage()">
                         <img id="language-flag" src="https://flagicons.lipis.dev/flags/4x3/fr.svg">
                         <span id="language-text">FR</span>
@@ -663,7 +664,7 @@
 
     <section id="team">
         <div class="container">
-            <h2 class="section-title" data-i18n="team.title">Notre Équipe</h2>
+            <h2 class="section-title" data-i18n="team.title">Notre équipe</h2>
             <div class="team-cards">
                 <div class="team-card">
                     <div class="team-info">
@@ -797,7 +798,7 @@
                     <img src="https://correctexam.github.io/corrigeExamFront/logo-jhipster.6125d9b31ded8344.png"
                         alt="Logo correctExam">
                     <p data-i18n="entity.correctexam">Nous avons échangé et organisé plusieurs rendez-vous avec
-                        l'équipe de CorrectEam
+                        l'équipe de CorrectExam
                         pour discuter des fonctionnalités à ajouter, ainsi que de la manière dont nous allions les
                         intégrer.</p>
                 </div>
@@ -816,9 +817,13 @@
 <script>
     const translations = {
         'fr': {
+            'objective.title': 'Objectif du projet',
+            'objective.description': "L'objectif principal de ce projet est de rendre la correction des examens plus rapide, efficace et précise grâce à l'intégration de technologies avancées. Nous utilisons des outils comme la reconnaissance optique de caractères (OCR) pour extraire automatiquement les réponses des copies manuscrites, et des systèmes de génération augmentée par récupération (RAG) pour proposer des corrections automatiques basées sur les documents du cours.",
+            'objective.additional': "En combinant ces technologies, nous visons à offrir une solution intuitive et puissante qui simplifie le travail des enseignants, tout en garantissant une évaluation cohérente et objective des étudiants. Ce projet s'inscrit dans le cadre de notre parcours universitaire, avec pour ambition d'améliorer l'expérience utilisateur et d'optimiser le processus de correction.",
             'nav.context': 'Contexte',
             'nav.solutions': 'Nos Solutions',
             'nav.team': 'Équipe',
+            'nav.team-supervisors': 'Encadrants',
             'hero.title': 'Automatisez la correction de vos examens',
             'hero.correct1': 'Amélioration des',
             'hero.correct2': 'fonctionnalités de',
@@ -837,18 +842,22 @@
             'solutions.interface.description': 'Notre application simplifie la correction en regroupant les réponses similaires et en les affichant sur une interface intuitive. L\'enseignant peut ainsi attribuer une note et un commentaire à chaque groupe de réponses. Il a également la possibilité d\'exclure certaines réponses du groupe si nécessaire.',
             'solutions.analytics.title': 'Correction automatique',
             'solutions.analytics.description': 'Nous proposons une correction automatique des examens en utilisant un système RAG (Retrieval-Augmented Generation). Ce RAG est alimenté par des documents issus du cours, lui permettant d\'extraire les informations pertinentes pour proposer une correction. Il s\'appuie ensuite sur un LLM, Lama 3.1, pour formuler une évaluation cohérente. L\'enseignant effectue une vérification finale avant de valider les notes.',
-            'team.title': 'Notre Équipe',
+            'team.title': 'Notre équipe',
             'team.supervisors.title': 'Nos encadrants',
             'team.partners.title': 'Au cours de l\'année, nous avons collaboré avec différents acteurs informatiques du bassin rennais, qui nous ont permis d\'utiliser leurs outils et d\'améliorer notre gestion de projet.',
             'entity.sopra': 'Plusieurs employés de Sopra Steria nous ont accompagnés dans la gestion du projet en contexte agile, notamment en participant régulièrement à des réunions et aux rétrospectives Scrum.',
             'entity.irisa': 'L\'IRISA nous a fourni le module MLT, une architecture de réseau neuronal légère dédiée à la reconnaissance de texte manuscrit. Basée sur cinq couches convolutives, elle extrait les caractéristiques visuelles du texte, comme les contours et les formes.',
-            'entity.correctexam': 'Nous avons échangé et organisé plusieurs rendez-vous avec l\'équipe de CorrectEam pour discuter des fonctionnalités à ajouter, ainsi que de la manière dont nous allions les intégrer.',
+            'entity.correctexam': 'Nous avons échangé et organisé plusieurs rendez-vous avec l\'équipe de CorrectExam pour discuter des fonctionnalités à ajouter, ainsi que de la manière dont nous allions les intégrer.',
             'context.video.caption': 'Démonstration de l\'application avant nos ajouts'
         },
         'en': {
+            'objective.title': 'Project Objective',
+            'objective.description': "The main objective of this project is to make exam grading faster, more efficient, and more accurate through the integration of advanced technologies. We use tools such as Optical Character Recognition (OCR) to automatically extract answers from handwritten papers, and Retrieval-Augmented Generation (RAG) systems to propose automatic corrections based on course materials.",
+            'objective.additional': "By combining these technologies, we aim to provide an intuitive and powerful solution that simplifies teachers' work while ensuring consistent and objective student assessment. This project is part of our university curriculum, with the goal of improving user experience and optimizing the grading process.",
             'nav.context': 'Context',
             'nav.solutions': 'Our Solutions',
             'nav.team': 'Team',
+            'nav.team-supervisors': 'Supervisors',
             'hero.title': 'Automate your exam grading',
             'hero.correct1': 'Improving',
             'hero.correct2': 'features of',
@@ -872,7 +881,7 @@
             'team.partners.title': 'Throughout the year, we collaborated with various IT actors in the Rennes area, who allowed us to use their tools and improve our project management.',
             'entity.sopra': 'Several Sopra Steria employees assisted us in managing the project in an agile context, particularly by regularly participating in meetings and Scrum retrospectives.',
             'entity.irisa': 'IRISA provided us with the MLT module, a lightweight neural network architecture dedicated to handwriting recognition. Based on five convolutional layers, it extracts visual characteristics of text, such as contours and shapes.',
-            'entity.correctexam': 'We exchanged and organized several meetings with the CorrectEam team to discuss features to add and how to integrate them.',
+            'entity.correctexam': 'We exchanged and organized several meetings with the CorrectExam team to discuss features to add and how to integrate them.',
             'context.video.caption': 'Application demonstration before our additions'
         }
     };
